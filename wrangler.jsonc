@@ -1,14 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "caption-creator",
+  "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-04-14",
-  "observability": {
-    "enabled": true
-  },
-  "assets": {
-    "not_found_handling": "single-page-application"
-  },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  "compatibility_flags": ["nodejs_compat"]
 }
