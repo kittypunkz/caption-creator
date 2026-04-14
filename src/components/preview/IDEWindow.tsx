@@ -71,12 +71,15 @@ export function IDEWindow({ style, filename, children }: Props) {
     background: 'rgba(0,0,0,0.5)',
     borderRadius: style === 'none' ? 12 : 8,
     overflow: 'hidden' as const,
+    display: 'flex',
+    flexDirection: 'column' as const,
+    height: '100%',
   }
 
   if (style === 'none') {
     return (
       <div style={containerStyle}>
-        <div style={{ padding: 32 }}>{children}</div>
+        <div style={{ padding: 32, flex: 1, display: 'flex', alignItems: 'center' }}>{children}</div>
       </div>
     )
   }
@@ -88,7 +91,7 @@ export function IDEWindow({ style, filename, children }: Props) {
       ) : (
         <WindowsTitleBar filename={filename} />
       )}
-      <div style={{ padding: 32 }}>{children}</div>
+      <div style={{ padding: 32, flex: 1, display: 'flex', alignItems: 'center' }}>{children}</div>
     </div>
   )
 }

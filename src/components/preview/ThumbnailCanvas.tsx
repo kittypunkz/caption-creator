@@ -30,13 +30,13 @@ export const ThumbnailCanvas = forwardRef<HTMLDivElement>((_, ref) => {
         height: canvasHeight,
         background: `linear-gradient(${gradientAngle}deg, ${gradientStart}, ${gradientEnd})`,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'stretch',
         justifyContent: 'center',
         padding: 60,
         flexShrink: 0,
       }}
     >
-      <div style={{ width: '100%' }}>
+      <div style={{ width: '100%', height: '100%' }}>
         <IDEWindow style={windowStyle} filename={windowFilename}>
           <TextLayers
             tag={tag}
