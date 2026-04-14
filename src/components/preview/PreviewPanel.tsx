@@ -1,9 +1,10 @@
-import { useRef, useState, useEffect, RefObject } from 'react'
+import { useRef, useState, useEffect } from 'react'
+import type { RefObject } from 'react'
 import { useStore } from '../../store/useStore'
 import { ThumbnailCanvas } from './ThumbnailCanvas'
 
 interface Props {
-  canvasRef: RefObject<HTMLDivElement>
+  canvasRef: RefObject<HTMLDivElement | null>
 }
 
 export function PreviewPanel({ canvasRef }: Props) {
