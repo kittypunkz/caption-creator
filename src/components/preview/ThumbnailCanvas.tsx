@@ -20,7 +20,10 @@ export const ThumbnailCanvas = forwardRef<HTMLDivElement>((_, ref) => {
     subtitleFont,
     subtitleSize,
     accentColor,
+    textAlign,
   } = useStore()
+
+  const fontScale = canvasWidth / 1200
 
   return (
     <div
@@ -37,15 +40,15 @@ export const ThumbnailCanvas = forwardRef<HTMLDivElement>((_, ref) => {
       }}
     >
       <div style={{ width: '100%', height: '100%' }}>
-        <IDEWindow style={windowStyle} filename={windowFilename}>
+        <IDEWindow style={windowStyle} filename={windowFilename} textAlign={textAlign}>
           <TextLayers
             tag={tag}
             title={title}
             subtitle={subtitle}
             titleFont={titleFont}
-            titleSize={titleSize}
+            titleSize={Math.round(titleSize * fontScale)}
             subtitleFont={subtitleFont}
-            subtitleSize={subtitleSize}
+            subtitleSize={Math.round(subtitleSize * fontScale)}
             accentColor={accentColor}
           />
         </IDEWindow>

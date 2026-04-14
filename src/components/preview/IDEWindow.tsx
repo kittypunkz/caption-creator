@@ -1,8 +1,10 @@
 import { ReactNode } from 'react'
+import type { TextAlign } from '../../store/useStore'
 
 interface Props {
   style: 'macos' | 'windows' | 'none'
   filename: string
+  textAlign: TextAlign
   children: ReactNode
 }
 
@@ -66,7 +68,13 @@ function WindowsTitleBar({ filename }: { filename: string }) {
   )
 }
 
-export function IDEWindow({ style, filename, children }: Props) {
+const JUSTIFY: Record<TextAlign, string> = {
+  top: 'flex-start',
+  center: 'center',
+  bottom: 'flex-end',
+}
+
+export function IDEWindow({ style, filename, textAlign, children }: Props) {
   const containerStyle = {
     background: 'rgba(0,0,0,0.5)',
     borderRadius: style === 'none' ? 12 : 8,
@@ -79,7 +87,7 @@ export function IDEWindow({ style, filename, children }: Props) {
   if (style === 'none') {
     return (
       <div style={containerStyle}>
-        <div style={{ padding: 32, flex: 1, display: 'flex', alignItems: 'center' }}>{children}</div>
+        <div style={{ padding: 32, flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: JUSTIFY[textAlign] }}>{children}</div>
       </div>
     )
   }
