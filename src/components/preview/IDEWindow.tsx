@@ -105,7 +105,11 @@ export function IDEWindow({ style, filename, textPosition, children }: Props) {
       ) : (
         <WindowsTitleBar filename={filename} />
       )}
-      <div style={contentStyle}>{children}</div>
+      <div style={contentStyle}>
+        <div style={{ flex: textPosition }} />
+        {children}
+        <div style={{ flex: 100 - textPosition }} />
+      </div>
     </div>
   )
 }
