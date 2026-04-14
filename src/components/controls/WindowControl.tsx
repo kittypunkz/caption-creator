@@ -1,4 +1,5 @@
 import { useStore } from '../../store/useStore'
+import type { WindowStyle } from '../../store/useStore'
 import { SectionHeader } from '../ui/SectionHeader'
 import { ColorPicker } from '../ui/ColorPicker'
 
@@ -7,8 +8,6 @@ const STYLES = [
   { id: 'windows', label: 'Windows' },
   { id: 'none',    label: 'None' },
 ] as const
-
-type WinStyle = typeof STYLES[number]['id']
 
 export function WindowControl() {
   const { windowStyle, windowFilename, accentColor, set } = useStore()
@@ -19,7 +18,7 @@ export function WindowControl() {
         {STYLES.map(s => (
           <button
             key={s.id}
-            onClick={() => set({ windowStyle: s.id as WinStyle })}
+            onClick={() => set({ windowStyle: s.id as WindowStyle })}
             className={`flex-1 py-1.5 rounded text-xs transition-colors ${
               windowStyle === s.id
                 ? 'bg-indigo-600 text-white'

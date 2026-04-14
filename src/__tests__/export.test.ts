@@ -13,6 +13,8 @@ beforeEach(() => {
     }
     return originalCreateElement(tag)
   })
+  vi.spyOn(document.body, 'appendChild').mockImplementation((node) => node)
+  vi.spyOn(document.body, 'removeChild').mockImplementation((node) => node)
 })
 
 import { exportToPng } from '../lib/export'

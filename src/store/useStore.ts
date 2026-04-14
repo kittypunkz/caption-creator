@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 type CanvasPreset = 'twitter-og' | 'linkedin' | 'ig-square' | 'ig-story' | 'youtube' | 'custom'
-type WindowStyle = 'macos' | 'windows' | 'none'
+export type WindowStyle = 'macos' | 'windows' | 'none'
 
 interface ThumbnailState {
   canvasPreset: CanvasPreset

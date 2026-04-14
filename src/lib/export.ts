@@ -5,5 +5,7 @@ export async function exportToPng(element: HTMLElement, filename = 'thumbnail.pn
   const a = document.createElement('a')
   a.download = filename
   a.href = dataUrl
+  document.body.appendChild(a)
   a.click()
+  document.body.removeChild(a)
 }

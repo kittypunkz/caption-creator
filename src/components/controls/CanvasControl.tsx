@@ -18,7 +18,7 @@ export function CanvasControl() {
   function handlePreset(id: PresetId) {
     const preset = PRESETS.find(p => p.id === id)!
     if (id === 'custom') {
-      set({ canvasPreset: 'custom' })
+      set({ canvasPreset: 'custom', canvasWidth: canvasWidth || 1200, canvasHeight: canvasHeight || 628 })
     } else {
       set({ canvasPreset: id, canvasWidth: preset.width, canvasHeight: preset.height })
     }
