@@ -1,10 +1,9 @@
 import type { ReactNode } from 'react'
-import type { TextAlign } from '../../store/useStore'
 
 interface Props {
   style: 'macos' | 'windows' | 'none'
   filename: string
-  textAlign: TextAlign
+  textPosition: number
   children: ReactNode
 }
 
@@ -68,13 +67,7 @@ function WindowsTitleBar({ filename }: { filename: string }) {
   )
 }
 
-const JUSTIFY: Record<TextAlign, string> = {
-  top: 'flex-start',
-  center: 'center',
-  bottom: 'flex-end',
-}
-
-export function IDEWindow({ style, filename, textAlign, children }: Props) {
+export function IDEWindow({ style, filename, textPosition, children }: Props) {
   const containerStyle = {
     background: 'rgba(0,0,0,0.5)',
     borderRadius: style === 'none' ? 12 : 8,
@@ -84,18 +77,23 @@ export function IDEWindow({ style, filename, textAlign, children }: Props) {
     height: '100%',
   }
 
+  // Two flex spacers around the content — their ratio controls vertical position.
+  // textPosition=0 → all space below (top), 50 → equal (center), 100 → all space above (bottom).
   const contentStyle = {
     padding: 32,
     flex: 1,
     display: 'flex',
     flexDirection: 'column' as const,
-    justifyContent: JUSTIFY[textAlign],
   }
 
   if (style === 'none') {
     return (
       <div style={containerStyle}>
-        <div style={contentStyle}>{children}</div>
+        <div style={contentStyle}>
+          <div style={{ flex: textPosition }} />
+          {children}
+          <div style={{ flex: 100 - textPosition }} />
+        </div>
       </div>
     )
   }

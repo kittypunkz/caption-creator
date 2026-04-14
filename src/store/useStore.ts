@@ -2,8 +2,6 @@ import { create } from 'zustand'
 
 type CanvasPreset = 'twitter-og' | 'linkedin' | 'ig-square' | 'ig-story' | 'youtube' | 'custom'
 export type WindowStyle = 'macos' | 'windows' | 'none'
-export type TextAlign = 'top' | 'center' | 'bottom'
-
 interface ThumbnailState {
   canvasPreset: CanvasPreset
   canvasWidth: number
@@ -21,7 +19,7 @@ interface ThumbnailState {
   windowStyle: WindowStyle
   windowFilename: string
   accentColor: string
-  textAlign: TextAlign
+  textPosition: number
   set: (partial: Partial<Omit<ThumbnailState, 'set'>>) => void
 }
 
@@ -42,6 +40,6 @@ export const useStore = create<ThumbnailState>((setState) => ({
   windowStyle: 'macos',
   windowFilename: 'index.tsx',
   accentColor: '#6366f1',
-  textAlign: 'center',
+  textPosition: 50,
   set: (partial) => setState((state) => ({ ...state, ...partial })),
 }))
