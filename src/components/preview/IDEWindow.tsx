@@ -84,10 +84,18 @@ export function IDEWindow({ style, filename, textAlign, children }: Props) {
     height: '100%',
   }
 
+  const contentStyle = {
+    padding: 32,
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column' as const,
+    justifyContent: JUSTIFY[textAlign],
+  }
+
   if (style === 'none') {
     return (
       <div style={containerStyle}>
-        <div style={{ padding: 32, flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: JUSTIFY[textAlign] }}>{children}</div>
+        <div style={contentStyle}>{children}</div>
       </div>
     )
   }
@@ -99,7 +107,7 @@ export function IDEWindow({ style, filename, textAlign, children }: Props) {
       ) : (
         <WindowsTitleBar filename={filename} />
       )}
-      <div style={{ padding: 32, flex: 1, display: 'flex', alignItems: 'center' }}>{children}</div>
+      <div style={contentStyle}>{children}</div>
     </div>
   )
 }
