@@ -21,14 +21,14 @@ function FontSelector({
         onChange={e => onChange(e.target.value)}
         className="bg-white/10 border border-white/10 rounded px-2 py-1.5 text-xs text-white/80 focus:outline-none focus:border-indigo-500"
       >
-        <optgroup label="Thai Fonts">
+        <optgroup label="Thai Fonts" style={{ backgroundColor: '#18181b', color: '#e5e5e5' }}>
           {THAI_FONTS.map(f => (
-            <option key={f.name} value={f.name}>{f.name}</option>
+            <option key={f.name} value={f.name} style={{ backgroundColor: '#18181b', color: '#e5e5e5' }}>{f.name}</option>
           ))}
         </optgroup>
-        <optgroup label="Coding Fonts">
+        <optgroup label="Coding Fonts" style={{ backgroundColor: '#18181b', color: '#e5e5e5' }}>
           {CODING_FONTS.map(f => (
-            <option key={f.name} value={f.name}>{f.name}</option>
+            <option key={f.name} value={f.name} style={{ backgroundColor: '#18181b', color: '#e5e5e5' }}>{f.name}</option>
           ))}
         </optgroup>
       </select>
